@@ -1,0 +1,47 @@
+nav {
+	display: flex;
+	justify-content: space-between;
+
+	.navLink {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		margin-right: 20px;
+
+		.logoText {
+			margin-left: 10px;
+			font-size: 24px;
+			color: white;
+			font-weight: 600;
+			line-height: 29px;
+		}
+
+		span {
+			margin-left: 10px;
+			color: white;
+		}
+	}
+
+	.navRightGroup {
+		display: flex;
+
+		.navButton {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+
+			&:hover {
+				cursor: pointer;
+			}
+
+			span {
+				margin-left: 10px;
+				color: white;
+			}
+		}
+
+		.hidden {
+			visibility: hidden;
+		}
+	}
+}

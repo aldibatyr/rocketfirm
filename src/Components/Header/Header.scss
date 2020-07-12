@@ -1,0 +1,22 @@
+.App-header {
+  position: fixed;
+  width: 100vw;
+  background-color: #000;
+  height: 400px;
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  overflow: hidden;
+  .header-content {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 50px;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  }
+}
+
+.scrolled {
+  height: 80px;
+  .header-content {
+    padding-top: 25px;
+  }
+}
