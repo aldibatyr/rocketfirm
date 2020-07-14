@@ -1,0 +1,11 @@
+.gridControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .iconWrapper {
+    padding: 8px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

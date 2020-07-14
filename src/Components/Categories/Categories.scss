@@ -5,13 +5,15 @@
   max-width: 400px;
   height: 18px;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1.0));
+  transition: 0.2s ease;
+  pointer-events: none;
 }
 
 .categories {
   overflow: auto;
   white-space: nowrap;
   scroll-behavior: smooth;
-
+  // margin-right: 400px;
   &::-webkit-scrollbar {
     display: none;
   }

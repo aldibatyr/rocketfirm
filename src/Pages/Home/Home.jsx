@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import "./Home.scss";
-import { Context } from "../../StateManagement/AppState";
+import GridControls from "../../Components/GridControls/GridControls";
+import PostsView from "../../Components/PostsView/PostsView";
 
 const Home = () => {
-  const context = useContext(Context);
+  const [listStyle, setListStyle] = useState(false);
 
-  console.log(context.searchQueries);
-
-  const handleAddQuery = () => {
-    context.setSearchQueries([...context.searchQueries, "new value"]);
+  const handleListStyleChange = () => {
+    setListStyle(!listStyle);
   };
   return (
-    <div style={{ minHeight: "120vh", paddingTop: '500px' }}>
-      <button onClick={handleAddQuery}>Push me</button>
+    <div style={{ minHeight: "120vh", paddingTop: "440px" }}>
+      <GridControls
+        listStyle={listStyle}
+        handleListStyleChange={handleListStyleChange}
+      />
+      <PostsView listStyle={listStyle} />
     </div>
   );
 };

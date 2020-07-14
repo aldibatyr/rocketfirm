@@ -1,50 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Categories.scss";
 
+import CategoryCell from "../CategoryCell/CategoryCell";
+import { Context } from "../../StateManagement/AppState";
+
 const Categories = () => {
+  const context = useContext(Context);
+
   return (
     <>
       <div className="categoriesOverlay" />
       <div className="categories">
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
+        {context.collections.map((collection, i) => (
+          <CategoryCell key={i} collection={collection} />
+        ))}
       </div>
     </>
   );

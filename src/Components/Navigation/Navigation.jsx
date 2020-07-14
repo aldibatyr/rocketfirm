@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as UnsplashLogo } from "../../assets/unsplashLogo.svg";
-import { ReactComponent as FavoriteIcon } from "../../assets/favoriteIcon.svg";
-import { ReactComponent as HistoryIcon } from "../../assets/historyLogo.svg";
-import { ReactComponent as SearchIcon } from "../../assets/searchIcon.svg";
+import {
+  FavoriteIcon,
+  HistoryIcon,
+  SearchIcon,
+  UnsplashLogo,
+} from "../../assets/svgs";
+import { unsplash } from "../../Networking/Networking";
 
 import "./Navigation.scss";
+import { Context } from "../../StateManagement/AppState";
 
 const Navigation = ({ minified, handleMinified }) => {
+  const context = useContext(Context);
+  const fetchInitialData = async () => {
+    const imagesData = await unsplash.photos.listPhotos(1, 25);
+    const json = await imagesData.json();
+    context.setPosts(json);
+  };
   return (
     <nav>
-      <Link className="navLink" to="/">
+      <Link onClick={fetchInitialData} className="navLink" to="/">
         <UnsplashLogo />
         <span className="logoText">ImageStock</span>
       </Link>
       <div className="navRightGroup">
-        <div onClick={handleMinified} className={minified ? "navButton" : "navButton hidden"}>
+        <div
+          onClick={handleMinified}
+          className={minified ? "navButton" : "navButton hidden"}
+        >
           <SearchIcon />
           <span>Поиск</span>
         </div>
         <Link className="navLink" to="/favorites">
-          <FavoriteIcon />
+          <FavoriteIcon size={23} />
           <span>Избранное</span>
         </Link>
         <div className="navButton">
-          <HistoryIcon />
+          <HistoryIcon size={23} />
           <span>История поиска</span>
         </div>
       </div>

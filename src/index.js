@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import 'normalize.css';
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import AppStateProvider from "./StateManagement/AppState";
+import Networking from "./Networking/Networking";
 
 ReactDOM.render(
   <BrowserRouter>
     <AppStateProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <Networking>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Networking>
     </AppStateProvider>
   </BrowserRouter>,
   document.getElementById("root")

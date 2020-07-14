@@ -1,21 +1,26 @@
 .App-header {
   position: fixed;
+  z-index: 1000;
   width: 100vw;
   background-color: #000;
   height: 400px;
-  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
   overflow: hidden;
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+
   .header-content {
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 50px;
-    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
   }
 }
 
 .scrolled {
   height: 80px;
+
+  background: blur(20px);
+
   .header-content {
     padding-top: 25px;
   }

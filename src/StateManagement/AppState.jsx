@@ -3,9 +3,9 @@ import React, { createContext, useState } from "react";
 export const Context = createContext();
 
 const AppStateProvider = ({ children }) => {
-  const [searchQueries, setSearchQueries] = useState([]);
-  const [likedImages, setLikedImages] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [searchQueries, setSearchQueries] = useState(JSON.parse(window.localStorage.getItem('searchQueries')) || []);
+  const [likedImages, setLikedImages] = useState(JSON.parse(window.localStorage.getItem('likedImages')) || []);
+  const [collections, setCollections] = useState([]);
   const [posts, setPosts] = useState([]);
 
   return (
@@ -16,8 +16,8 @@ const AppStateProvider = ({ children }) => {
           setSearchQueries,
           likedImages,
           setLikedImages,
-          categories,
-          setCategories,
+          collections,
+          setCollections,
           posts,
           setPosts,
         }}
