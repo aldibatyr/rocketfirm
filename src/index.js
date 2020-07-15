@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import 'normalize.css';
+import "normalize.css";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import AppStateProvider from "./StateManagement/AppState";
 import Networking from "./Networking/Networking";
+import ScrollToTop from "./Components/ScrollToTop";
 
 ReactDOM.render(
   <BrowserRouter>
+    <ScrollToTop />
     <AppStateProvider>
       <Networking>
         <React.StrictMode>

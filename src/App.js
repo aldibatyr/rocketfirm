@@ -9,7 +9,7 @@ import Header from "./Components/Header/Header";
 
 const routes = [
   { path: "/", name: "Home", Component: Home },
-  { path: "/photo", name: "Photo", Component: DetailedPhoto },
+  { path: "/photo/:id", name: "Photo", Component: DetailedPhoto },
   { path: "/favorites", name: "Favorites", Component: Favorites },
 ];
 

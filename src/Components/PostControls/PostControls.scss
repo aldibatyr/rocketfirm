@@ -1,0 +1,13 @@
+.postControls {
+  margin-top: 30px;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+
+  .controlWrapper {
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

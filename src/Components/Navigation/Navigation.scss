@@ -32,6 +32,12 @@ nav {
 
 			&:hover {
 				cursor: pointer;
+
+				.iconName {
+					.underline {
+						width: 30px;
+					}
+				}
 			}
 
 			span {
@@ -42,6 +48,29 @@ nav {
 
 		.hidden {
 			visibility: hidden;
+		}
+	}
+}
+
+
+.underlineable {
+	&:hover {
+		.iconName {
+			.underline {
+				width: 30px;
+			}
+		}
+	}
+	.iconName {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		.underline {
+
+			height: 3px;
+			width: 0px;
+			background: white;
+			transition: 0.2s ease;
 		}
 	}
 }

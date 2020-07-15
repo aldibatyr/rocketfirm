@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../StateManagement/AppState";
 import "./Home.scss";
 import GridControls from "../../Components/GridControls/GridControls";
 import PostsView from "../../Components/PostsView/PostsView";
 
 const Home = () => {
   const [listStyle, setListStyle] = useState(false);
-
+  const context = useContext(Context);
   const handleListStyleChange = () => {
     setListStyle(!listStyle);
   };
@@ -15,7 +16,11 @@ const Home = () => {
         listStyle={listStyle}
         handleListStyleChange={handleListStyleChange}
       />
-      <PostsView listStyle={listStyle} />
+      {context.posts !== [] ? (
+        <PostsView listStyle={listStyle} posts={context.posts} />
+      ) : (
+        <h1>loading</h1>
+      )}
     </div>
   );
 };

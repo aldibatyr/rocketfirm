@@ -1,30 +1,12 @@
 import React, { useState } from "react";
 import "./Post.scss";
-import { keys } from "../../keys";
-import { FavoriteIcon, PanIcon, DownloadIcon } from "../../assets/svgs";
-import {
-  handleFavoriteZoom,
-  handleFavoriteNormalize,
-  handlePanNormalize,
-  handlePanZoom,
-  handleDownloadNormalize,
-  handleDownloadZoom,
-} from "./postAnimations";
-// import { unsplash } from "../../Networking/Networking";
+
+import PostControls from "../PostControls/PostControls";
+import UserAvatar from "../UserAvatar/UserAvatar";
+import UserInfo from "../UserInfo/UserInfo";
 
 const Post = ({ post }) => {
   const [hovered, setHovered] = useState(false);
-  // const handleDownload = async () => {
-  //   const photoData = await unsplash.photos.getPhoto(post.id);
-  //   const json = await photoData.json();
-  //   unsplash.photos.downloadPhoto(json);
-  //   // const data = await fetch(
-  //   //   `${post.links.download_location}/client_id=${keys.ACCESS_KEY}`
-  //   // );
-  //   // const blob = await data.blob();
-  //   // console.log(blob);
-  // };
-
   const handleHover = () => {
     setHovered(true);
   };
@@ -44,37 +26,28 @@ const Post = ({ post }) => {
         alt={post.alt_description}
       />
       <div className="content">
-        <img src={post.user.profile_image.medium} alt={post.user.name} />
-        <p className="authorName">{post.user.name}</p>
-        <a href={post.user.links.html}>@{post.user.username}</a>
-        <div className="postControls">
-          <div
-            className="controlWrapper favoriteIcon"
-            onMouseEnter={handleFavoriteZoom}
-            onMouseLeave={handleFavoriteNormalize}
-          >
-            <FavoriteIcon size={28} />
-          </div>
-          <div
-            className="controlWrapper panIcon"
-            onMouseEnter={handlePanZoom}
-            onMouseLeave={handlePanNormalize}
-          >
-            <PanIcon size={28} />
-          </div>
-          <a
-            href={`${post.links.download_location}/client_id=${keys.ACCESS_KEY}`}
-            className="controlWrapper downloadIcon"
-            onMouseEnter={handleDownloadZoom}
-            onMouseLeave={handleDownloadNormalize}
-            // onClick={handleDownload}
-          >
-            <DownloadIcon size={28} />
-          </a>
-        </div>
+        <UserAvatar user={post.user} size={70} />
+        <div style={{ height: "10px" }}></div>
+        <UserInfo user={post.user} alignment="center" fontSize={30}/>
+        <PostControls post={post} />
       </div>
     </div>
   );
 };
 
 export default Post;
+
+// TODO: Implement Download functionality
+
+// import { unsplash } from "../../Networking/Networking";
+
+// const handleDownload = async () => {
+//   const photoData = await unsplash.photos.getPhoto(post.id);
+//   const json = await photoData.json();
+//   unsplash.photos.downloadPhoto(json);
+//   // const data = await fetch(
+//   //   `${post.links.download_location}/client_id=${keys.ACCESS_KEY}`
+//   // );
+//   // const blob = await data.blob();
+//   // console.log(blob);
+// };

@@ -15,6 +15,7 @@ const SearchBar = () => {
     const photosData = await unsplash.search.photos(searchQuery, 1, 24);
     const photosJson = await photosData.json();
     await context.setPosts(photosJson.results);
+    setSearchQuery('')
   };
 
   return (
@@ -24,6 +25,7 @@ const SearchBar = () => {
           type="text"
           name="search"
           placeholder="Поиск"
+          value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </form>

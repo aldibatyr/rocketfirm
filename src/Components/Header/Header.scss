@@ -25,3 +25,24 @@
     padding-top: 25px;
   }
 }
+
+.historyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    color: white;
+    font-size: 43px;
+  }
+
+  .requestsHistory {
+    max-width: 1200px;
+
+    span {
+      color: white;
+      margin-right: 20px;
+    }
+  }
+}
