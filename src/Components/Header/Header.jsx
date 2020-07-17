@@ -11,10 +11,9 @@ import { Context } from "../../StateManagement/AppState";
 const Header = () => {
   const context = useContext(Context);
   const route = useLocation();
-  console.log(route.pathname.includes("photo"));
-
-  const [minified, setMinified] = useState(false);
+  const [minified, setMinified] = useState(true);
   const [showingHistory, setShowingHistory] = useState(false);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -23,7 +22,11 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (route.pathname.includes("photo")) {
+    if (
+      route.pathname.includes("photo") ||
+      route.pathname.includes("favorites") ||
+      route.pathname.includes("searchResults")
+    ) {
       setMinified(true);
     } else {
       setMinified(false);
@@ -32,15 +35,13 @@ const Header = () => {
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset;
-
-    if (scrollTop > 50 || route.pathname.includes("photo")) {
+    if (
+      (!route.pathname.includes("photo") ||
+        !route.pathname.includes("favorites")) &&
+      scrollTop > 50
+    ) {
       setMinified(true);
-    } else if (scrollTop < 50 || !route.pathname.includes("photo")) {
-      setMinified(false);
-    } else if (route.pathname.includes("photo")) {
-      setMinified(true);
-    } 
-    console.log(scrollTop);
+    }
   };
 
   const handleMinified = () => {
@@ -49,20 +50,16 @@ const Header = () => {
   };
 
   const handleShowHistory = () => {
+    setMinified(false);
     setShowingHistory(true);
     console.log(showingHistory);
   };
-
-  // const showHistory = () => {
-  //   return (
-
-  //   );
-  // };
   return (
     <header className={minified ? "App-header scrolled" : "App-header"}>
       <div className="header-content">
         <Navigation
           minified={minified}
+          showingHistory={showingHistory}
           handleMinified={handleMinified}
           handleShowHistory={handleShowHistory}
         />
@@ -73,7 +70,7 @@ const Header = () => {
               {context.searchQueries !== [] ? (
                 context.searchQueries.map((query) => <span>{query}</span>)
               ) : (
-                <span>Все чисто</span>
+                <span className="emptyListIndicator">Все чисто</span>
               )}
             </div>
           </div>

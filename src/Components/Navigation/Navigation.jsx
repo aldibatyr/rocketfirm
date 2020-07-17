@@ -6,26 +6,27 @@ import {
   SearchIcon,
   UnsplashLogo,
 } from "../../assets/svgs";
-import { unsplash } from "../../Networking/Networking";
 
 import "./Navigation.scss";
 import { Context } from "../../StateManagement/AppState";
 
-const Navigation = ({ minified, handleMinified, handleShowHistory }) => {
+const Navigation = ({
+  minified,
+  handleMinified,
+  handleShowHistory,
+  showingHistory,
+}) => {
   const context = useContext(Context);
-  const fetchInitialData = async () => {
-    const imagesData = await unsplash.photos.listPhotos(1, 25);
-    const json = await imagesData.json();
-    context.setPosts(json);
-  };
+
   return (
     <nav>
-      <Link onClick={fetchInitialData} className="navLink" to="/">
+      <Link onClick={context.fetchData} className="navLink" to="/">
         <UnsplashLogo />
         <span className="logoText">ImageStock</span>
       </Link>
       <div className="navRightGroup">
         <div
+          style={showingHistory ? { visibility: "visible" } : {}}
           onClick={handleMinified}
           className={
             minified

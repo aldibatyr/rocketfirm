@@ -1,5 +1,6 @@
 .outerContainer {
   position: relative;
+  min-height: 110vh;
 
   .photoCoverSection {
     z-index: -1;
@@ -11,12 +12,13 @@
     background-position: center;
     width: 100vw;
     min-height: 110vh;
-    filter: blur(5px);
+    filter: blur(5px) brightness(80%);
   }
 
   .photoContent {
     padding-top: 120px;
     max-width: 1200px;
+    width: 80%;
     margin: 0 auto;
 
     .photoControls {
@@ -71,7 +73,9 @@
 
     .detailedImageContainer {
       max-width: 1200px;
+      // width: 80%;
       margin-top: 44px;
+
       .detailedImage {
         display: block;
         margin: 0 auto;
@@ -84,5 +88,63 @@
       }
 
     }
+
+    .similarTags {
+      h3 {
+        text-align: center;
+        color: white;
+      }
+
+      .tagsContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        // align-items: center;
+        .tagWrapper {
+          padding: 5px 10px;
+          background: white;
+          border-radius: 8px;
+          margin-right: 20px;
+          margin-bottom: 20px;
+          transition: 0.2s ease;
+          border: none;
+
+          &:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          }
+
+          span {
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+.similarPhotosContainer {
+  margin-top: 100px;
+  max-width: 1200px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .similarPhotosHeadline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: gray;
+    }
+  }
+
+  .similarPhotos {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 }

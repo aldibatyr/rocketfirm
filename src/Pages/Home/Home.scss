@@ -1,0 +1,12 @@
+.loadingIndicatorWrapper {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loadingIndicator {
+    padding: 10px;
+    border-radius: 100%;
+  }
+
+}

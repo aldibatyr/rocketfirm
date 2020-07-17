@@ -16,21 +16,13 @@ import { Link } from "react-router-dom";
 const PostControls = ({ post }) => {
   const context = useContext(Context);
 
-  const handleAddToFavorites = () => {
-    context.setLikedImages([...context.likedImages, post]);
-    window.localStorage.setItem(
-      "likedImages",
-      JSON.stringify([...context.likedImages, post])
-    );
-  };
-
   return (
     <div className="postControls">
       <div
         className="controlWrapper favoriteIcon"
         onMouseEnter={handleFavoriteZoom}
         onMouseLeave={handleFavoriteNormalize}
-        onClick={handleAddToFavorites}
+        onClick={() => context.addPhotoToFavorites(post)}
       >
         <FavoriteIcon size={28} color="white" />
       </div>

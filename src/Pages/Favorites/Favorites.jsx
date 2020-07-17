@@ -5,6 +5,8 @@ import GridControls from "../../Components/GridControls/GridControls";
 import { Context } from "../../StateManagement/AppState";
 import { useContext } from "react";
 
+import "./Favorites.scss";
+
 const Favorites = () => {
   const [listStyle, setListStyle] = useState(false);
   const context = useContext(Context);
@@ -12,7 +14,8 @@ const Favorites = () => {
     setListStyle(!listStyle);
   };
   return (
-    <div style={{ paddingTop: "440px" }}>
+    <div style={{ paddingTop: "110px" }}>
+      <h1 className="pageTitle">Избранное</h1>
       <GridControls
         listStyle={listStyle}
         handleListStyleChange={handleListStyleChange}

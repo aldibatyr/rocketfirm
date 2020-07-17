@@ -6,18 +6,17 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import AppStateProvider from "./StateManagement/AppState";
-import Networking from "./Networking/Networking";
 import ScrollToTop from "./Components/ScrollToTop";
 
 ReactDOM.render(
   <BrowserRouter>
     <ScrollToTop />
     <AppStateProvider>
-      <Networking>
+      {/* <NetworkingContext> */}
         <React.StrictMode>
           <App />
         </React.StrictMode>
-      </Networking>
+      {/* </NetworkingContext> */}
     </AppStateProvider>
   </BrowserRouter>,
   document.getElementById("root")
