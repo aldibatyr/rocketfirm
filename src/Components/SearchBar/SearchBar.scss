@@ -1,3 +1,5 @@
+@import '../../breakpoints.scss';
+
 .searchBar {
   width: 70%;
   margin: 0 auto;
@@ -10,6 +12,9 @@
     color: white;
     text-align: center;
 
+    @include media('<tablet') {
+      font-size: 2rem;
+    }
     &::placeholder {
       color: white;
     }

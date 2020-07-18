@@ -1,3 +1,5 @@
+@import '../../breakpoints.scss';
+
 .outerContainer {
   position: relative;
   min-height: 110vh;
@@ -13,6 +15,10 @@
     width: 100vw;
     min-height: 110vh;
     filter: blur(5px) brightness(80%);
+
+    @include media('<tablet') {
+      display: none;
+    }
   }
 
   .photoContent {
@@ -20,6 +26,10 @@
     max-width: 1200px;
     width: 80%;
     margin: 0 auto;
+
+    @include media('<tablet') {
+      width: calc(100vw - 40px);
+    }
 
     .photoControls {
       display: flex;
@@ -43,10 +53,12 @@
           justify-content: center;
           align-items: center;
           border: none;
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          ;
 
           &:hover {
             cursor: pointer;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
           }
         }
 
@@ -62,10 +74,12 @@
           color: white;
           font-size: 20px;
           transition: 0.2s ease;
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+          ;
 
           &:hover {
             cursor: pointer;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
           }
         }
       }
@@ -93,6 +107,17 @@
       h3 {
         text-align: center;
         color: white;
+        margin: 0;
+        padding: 0;
+        margin-top: 80px;
+
+
+        @include media('<tablet') {
+          margin-top: 30px;
+          margin-bottom: 14px;
+          text-align: left;
+          color: black;
+        }
       }
 
       .tagsContainer {
@@ -110,6 +135,10 @@
           margin-bottom: 20px;
           transition: 0.2s ease;
           border: none;
+
+          @include media('<tablet') {
+            background: #F2F2F2;
+          }
 
           &:hover {
             cursor: pointer;
@@ -132,13 +161,23 @@
   margin-left: auto;
   margin-right: auto;
 
+  @include media('<tablet') {
+    width: calc(100vw - 40px);
+    margin-top: 30px;
+  }
+
   .similarPhotosHeadline {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     a {
       text-decoration: none;
       color: gray;
+
+      @include media('<tablet') {
+        display: none;
+      }
     }
   }
 
@@ -146,5 +185,9 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
+    @include media('<tablet') {
+      flex-direction: column;
+    }
   }
 }

@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import "./SearchBar.scss";
 import { Context } from "../../StateManagement/AppState";
 import { useHistory } from "react-router-dom";
-const SearchBar = () => {
+const SearchBar = ({ maximizeHeader, resetHeader }) => {
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState("");
   const context = useContext(Context);
@@ -15,6 +15,8 @@ const SearchBar = () => {
       JSON.stringify([...context.searchQueries, searchQuery])
     );
     context.fetchPhotosFromSearchRequest(searchQuery);
+    context.resetAdditionalPosts();
+    context.resetPageCount();
     setSearchQuery("");
     history.push("/searchResults");
   };

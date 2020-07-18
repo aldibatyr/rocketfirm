@@ -1,3 +1,5 @@
+@import '../../breakpoints.scss';
+
 .imagesGrid {
   max-width: 1200px;
   margin: 0 auto;
@@ -5,12 +7,15 @@
   align-items: flex-start;
   justify-content: center;
   min-height: 100vh;
+
+
 }
 
 .imagesList {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .imagePost {
     max-width: 600px;
   }

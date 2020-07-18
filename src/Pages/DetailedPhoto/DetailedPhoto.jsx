@@ -9,8 +9,11 @@ import { FavoriteIcon, DownloadIcon } from "../../assets/svgs";
 import { useEffect } from "react";
 import { useState } from "react";
 import Post from "../../Components/Post/Post";
+import { useWindowSize } from "react-use";
+import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 
 const DetailedPhoto = () => {
+  const { width } = useWindowSize();
   const [loading, setLoading] = useState(true);
   const context = useContext(Context);
   let { id } = useParams();
@@ -31,7 +34,11 @@ const DetailedPhoto = () => {
   const makeDetailedPage = () => {
     return (
       <>
-        <div className="outerContainer" style={{ position: "relative" }}>
+        <div
+          id="top"
+          className="outerContainer"
+          style={{ position: "relative" }}
+        >
           <div
             className="photoCoverSection"
             style={{
@@ -44,19 +51,25 @@ const DetailedPhoto = () => {
                 <UserAvatar user={context.selectedPost.user} size={50} />
                 <div style={{ width: "10px" }}></div>
                 <UserInfo
+                  mobile={width < 768}
                   user={context.selectedPost.user}
                   alignment="left"
                   fontSize={24}
                 />
               </div>
               <div className="likeAndDownload">
-                <button className="likeButton">
+                <button
+                  className="likeButton"
+                  onClick={() => context.addPhotoToFavorites(context.selectedPost)}
+                >
                   <FavoriteIcon size={25} color="gray" />
                 </button>
                 <div style={{ width: "10px" }}></div>
                 <button className="downloadButton">
                   <DownloadIcon size={34} />
-                  <span>Download</span>
+                  <span style={width < 768 ? { display: "none" } : {}}>
+                    Download
+                  </span>
                 </button>
               </div>
             </div>
@@ -113,6 +126,7 @@ const DetailedPhoto = () => {
               </span>
             )}
           </div>
+          <ScrollToTopButton />
         </div>
       </>
     );

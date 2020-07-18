@@ -7,6 +7,12 @@ import "./Header.scss";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../StateManagement/AppState";
+import { useWindowSize } from "react-use";
+import {
+  minimizeHeader,
+  expandHeader,
+  loadInitialHeader,
+} from "./headerAnimations";
 
 const Header = () => {
   const context = useContext(Context);
@@ -14,6 +20,7 @@ const Header = () => {
   const [minified, setMinified] = useState(true);
   const [showingHistory, setShowingHistory] = useState(false);
 
+  const { width } = useWindowSize();
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -27,8 +34,10 @@ const Header = () => {
       route.pathname.includes("favorites") ||
       route.pathname.includes("searchResults")
     ) {
+      minimizeHeader();
       setMinified(true);
     } else {
+      loadInitialHeader(width);
       setMinified(false);
     }
   }, [route.pathname]);
@@ -41,21 +50,24 @@ const Header = () => {
       scrollTop > 50
     ) {
       setMinified(true);
+      minimizeHeader();
     }
   };
 
   const handleMinified = () => {
     setMinified(false);
+    expandHeader(width);
     setShowingHistory(false);
   };
 
   const handleShowHistory = () => {
     setMinified(false);
+    expandHeader(width);
     setShowingHistory(true);
-    console.log(showingHistory);
   };
+
   return (
-    <header className={minified ? "App-header scrolled" : "App-header"}>
+    <header className="App-header">
       <div className="header-content">
         <Navigation
           minified={minified}

@@ -3,34 +3,41 @@ import { Context } from "../../StateManagement/AppState";
 import "./Home.scss";
 import GridControls from "../../Components/GridControls/GridControls";
 import PostsView from "../../Components/PostsView/PostsView";
-import { LoadigIndicator, ArrowUp } from "../../assets/svgs";
+import { LoadigIndicator } from "../../assets/svgs";
 import gsap from "gsap";
 import { useEffect } from "react";
+import { useWindowSize } from "react-use";
 import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
+import LoadMoreButton from "../../Components/LoadMoreButton/LoadMoreButton";
 
 const Home = () => {
   const [listStyle, setListStyle] = useState(false);
+  const { width } = useWindowSize();
   const context = useContext(Context);
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  useEffect(() => {
+    gsap.to(".loadingIndicator", {
+      rotateZ: 360,
+      repeat: -1,
+      duration: 3,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (width < 768) {
+      setListStyle(true);
+    }
+  }, []);
+
   const handleListStyleChange = () => {
     setListStyle(!listStyle);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", loadAdditionalPosts);
-    return () => {
-      window.removeEventListener("scroll", loadAdditionalPosts);
-    };
-  });
-  gsap.to(".loadingIndicator", {
-    rotateZ: 360,
-    repeat: -1,
-    duration: 3,
-  });
-
-  const loadAdditionalPosts = () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      context.fetchAdditionalPosts();
-    }
+  const loadAdditionalPosts = async () => {
+    setLoadingMore(true);
+    await context.fetchAdditionalPosts();
+    setLoadingMore(false);
   };
 
   return (
@@ -42,7 +49,6 @@ const Home = () => {
         scrollBehavior: "smooth",
       }}
     >
-      <ScrollToTopButton />
       <GridControls
         listStyle={listStyle}
         handleListStyleChange={handleListStyleChange}
@@ -62,10 +68,15 @@ const Home = () => {
           : ""}
       </div>
       <div className="loadingIndicatorWrapper">
-        <div className="loadingIndicator">
-          <LoadigIndicator />
-        </div>
+        {loadingMore ? (
+          <div className="loadingIndicator">
+            <LoadigIndicator />
+          </div>
+        ) : (
+          <LoadMoreButton actionFunction={loadAdditionalPosts} />
+        )}
       </div>
+      <ScrollToTopButton />
     </div>
   );
 };

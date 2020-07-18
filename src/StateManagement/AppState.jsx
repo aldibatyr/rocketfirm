@@ -18,12 +18,16 @@ const AppStateProvider = ({ children }) => {
   const [page, setPage] = useState(2);
   const [selectedPost, setSelectedPost] = useState({});
   const [loading, setLoading] = useState(false);
+  const [currentSearchQuery, setCurrentSearchQuery] = useState("");
   const [additionalPosts, setAdditionalPosts] = useState([]);
 
   const fetchData = async () => {
+    setLoading(true);
     const imagesData = await unsplash.photos.listPhotos(1, 25);
     const json = await imagesData.json();
     setPosts(json);
+    setAdditionalPosts([]);
+    setLoading(false);
   };
 
   const fetchAdditionalPosts = async () => {
@@ -31,6 +35,10 @@ const AppStateProvider = ({ children }) => {
     const json = await additionalImagesData.json();
     setAdditionalPosts([...additionalPosts, json]);
     setPage((page) => page + 1);
+  };
+
+  const resetAdditionalPosts = () => {
+    setAdditionalPosts([]);
   };
   const fetchCollections = async () => {
     const collectionsData = await unsplash.collections.listCollections(
@@ -44,11 +52,24 @@ const AppStateProvider = ({ children }) => {
 
   const fetchPhotosFromSearchRequest = async (searchQuery) => {
     setLoading(true);
+    setCurrentSearchQuery(searchQuery);
     const imagesData = await unsplash.search.photos(searchQuery, 1, 25);
     const imagesJson = await imagesData.json();
     setPosts(imagesJson.results);
     setLoading(false);
     return;
+  };
+
+  const fetchAdditionalFromSearchRequest = async () => {
+    setLoading(true);
+    const imagesData = await unsplash.search.photos(
+      currentSearchQuery,
+      page,
+      25
+    );
+    const imagesJson = await imagesData.json();
+    setAdditionalPosts([...additionalPosts, imagesJson.results]);
+    setPage((page) => page + 1);
   };
 
   const getCollectionPhotos = async (collectionId) => {
@@ -76,6 +97,10 @@ const AppStateProvider = ({ children }) => {
     setSelectedPost(photoDetailsJson);
   };
 
+  const resetPageCount = () => {
+    setPage(2);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -90,6 +115,7 @@ const AppStateProvider = ({ children }) => {
         value={{
           searchQueries,
           setSearchQueries,
+          currentSearchQuery,
           likedImages,
           setLikedImages,
           collections,
@@ -106,6 +132,9 @@ const AppStateProvider = ({ children }) => {
           loading,
           additionalPosts,
           fetchAdditionalPosts,
+          resetPageCount,
+          resetAdditionalPosts,
+          fetchAdditionalFromSearchRequest,
         }}
       >
         {children}

@@ -1,3 +1,5 @@
+@import '../../breakpoints.scss';
+
 .App-header {
   position: fixed;
   z-index: 1000;
@@ -5,21 +7,27 @@
   background-color: #000;
   height: 400px;
   overflow: hidden;
-  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  // transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+
+  @include media('<tablet') {
+    height: 240px;
+  }
 
   .header-content {
-    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+    // transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 50px;
+
+    @include media('<tablet') {
+      width: calc(100vw - 40px);
+    }
   }
 }
 
 .scrolled {
   height: 80px;
-
-  background: blur(20px);
 
   .header-content {
     padding-top: 25px;
@@ -32,18 +40,32 @@
   justify-content: center;
   align-items: center;
 
+
   h3 {
     color: white;
     font-size: 43px;
+
+    @include media('<tablet') {
+      font-size: 36px;
+    }
   }
 
   .requestsHistory {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 1200px;
-    text-align: center;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    width: 80%;
+
+    @include media('<tablet') {
+      width: calc(100vw - 40px);
+    }
 
     span {
       color: white;
       margin-right: 20px;
+      margin-bottom: 20px;
     }
   }
 }
