@@ -109,6 +109,7 @@ const AppStateProvider = ({ children }) => {
     fetchCollections();
   }, []);
 
+
   return (
     <div>
       <Context.Provider

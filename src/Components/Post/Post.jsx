@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Post.scss";
 
 import PostControls from "../PostControls/PostControls";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import UserInfo from "../UserInfo/UserInfo";
+import { Context } from "../../StateManagement/AppState";
 
 const Post = ({ post }) => {
+  const context = useContext(Context);
   const [hovered, setHovered] = useState(false);
   const handleHover = () => {
     setHovered(true);
@@ -13,6 +15,7 @@ const Post = ({ post }) => {
   const handleOffHover = () => {
     setHovered(false);
   };
+
   return (
     <div
       className={hovered ? "imagePost hovered" : "imagePost"}
@@ -28,7 +31,7 @@ const Post = ({ post }) => {
       <div className="content">
         <UserAvatar user={post.user} size={70} />
         <div style={{ height: "10px" }}></div>
-        <UserInfo user={post.user} alignment="center" fontSize={30}/>
+        <UserInfo user={post.user} alignment="center" fontSize={30} />
         <PostControls post={post} />
       </div>
     </div>

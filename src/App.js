@@ -24,6 +24,7 @@ function App() {
             <Component />
           </Route>
         ))}
+        {/* <AddNotification /> */}
       </main>
     </div>
   );

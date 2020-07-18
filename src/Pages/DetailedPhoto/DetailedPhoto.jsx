@@ -31,6 +31,17 @@ const DetailedPhoto = () => {
     loadPage();
   }, [id]);
 
+  const [postLiked, setPostLiked] = useState(false);
+
+  useEffect(() => {
+    let likedImageObj = context.likedImages.find(
+      (image) => image.id == context.selectedPost.id
+    );
+    if (likedImageObj !== undefined) {
+      setPostLiked(true);
+    }
+  }, []);
+
   const makeDetailedPage = () => {
     return (
       <>
@@ -60,9 +71,12 @@ const DetailedPhoto = () => {
               <div className="likeAndDownload">
                 <button
                   className="likeButton"
-                  onClick={() => context.addPhotoToFavorites(context.selectedPost)}
+                  onClick={() => {
+                    context.addPhotoToFavorites(context.selectedPost);
+                    setPostLiked(true);
+                  }}
                 >
-                  <FavoriteIcon size={25} color="gray" />
+                  <FavoriteIcon size={25} color={postLiked ? "red" : "gray"} />
                 </button>
                 <div style={{ width: "10px" }}></div>
                 <button className="downloadButton">

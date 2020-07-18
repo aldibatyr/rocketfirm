@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./PostControls.scss";
 import { keys } from "../../keys";
 import { FavoriteIcon, PanIcon, DownloadIcon } from "../../assets/svgs";
@@ -16,15 +16,29 @@ import { Link } from "react-router-dom";
 const PostControls = ({ post }) => {
   const context = useContext(Context);
 
+  const [postLiked, setPostLiked] = useState(false);
+
+  useEffect(() => {
+    let likedImageObj = context.likedImages.find(
+      (image) => image.id == post.id
+    );
+    if (likedImageObj !== undefined) {
+      setPostLiked(true);
+    }
+  }, []);
+
   return (
     <div className="postControls">
       <div
         className="controlWrapper favoriteIcon"
         onMouseEnter={handleFavoriteZoom}
         onMouseLeave={handleFavoriteNormalize}
-        onClick={() => context.addPhotoToFavorites(post)}
+        onClick={() => {
+          context.addPhotoToFavorites(post);
+          setPostLiked(true);
+        }}
       >
-        <FavoriteIcon size={28} color="white" />
+        <FavoriteIcon size={28} color={postLiked ? "red" : "white"} />
       </div>
       <Link
         to={{
