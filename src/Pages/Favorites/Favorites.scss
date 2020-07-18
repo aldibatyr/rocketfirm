@@ -1,4 +1,10 @@
+@import '../../breakpoints.scss';
+
 .pageTitle {
   font-size: 72px;
   text-align: center;
+
+  @include media('<tablet') {
+    font-size: 36px;
+  }
 }

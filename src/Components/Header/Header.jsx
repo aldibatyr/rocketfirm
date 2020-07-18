@@ -19,6 +19,7 @@ const Header = () => {
   const route = useLocation();
   const [minified, setMinified] = useState(true);
   const [showingHistory, setShowingHistory] = useState(false);
+  const [showingMobileSearch, setShowingMobileSearch] = useState(false);
 
   const { width } = useWindowSize();
   useEffect(() => {
@@ -40,6 +41,7 @@ const Header = () => {
       loadInitialHeader(width);
       setMinified(false);
     }
+    setShowingMobileSearch(false);
   }, [route.pathname]);
 
   const handleScroll = () => {
@@ -58,6 +60,9 @@ const Header = () => {
     setMinified(false);
     expandHeader(width);
     setShowingHistory(false);
+    if (width < 768) {
+      setShowingMobileSearch(true);
+    }
   };
 
   const handleShowHistory = () => {
@@ -92,7 +97,7 @@ const Header = () => {
               <SearchBar />
             </div>
             <div className="categoriesContainer">
-              <Categories />
+              <Categories showingMobileSearch={showingMobileSearch} />
             </div>
           </>
         )}

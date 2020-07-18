@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import gsap from "gsap";
 
 export const minimizeHeader = () => {
   gsap.to(".App-header", { height: 80, duration: 0.8 });
