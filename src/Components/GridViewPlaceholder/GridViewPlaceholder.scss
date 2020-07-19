@@ -1,0 +1,26 @@
+.loadingScreen {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .rectangle {
+    width: 30%;
+    height: 300px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+    animation: shine-animation 1.6s infinite;
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes shine-animation {
+
+  0% {
+    background-position: 40px
+  }
+
+  100% {
+    background-position: 33vw
+  }
+}

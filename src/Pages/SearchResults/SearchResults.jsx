@@ -56,7 +56,6 @@ const SearchResults = () => {
           <LoadMoreButton actionFunction={loadAdditionalPosts} />
         )}
       </div>
-      <ScrollToTopButton />
     </div>
   );
 };

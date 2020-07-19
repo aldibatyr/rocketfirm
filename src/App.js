@@ -8,7 +8,7 @@ import SearchResults from "./Pages/SearchResults/SearchResults";
 import Header from "./Components/Header/Header";
 
 import "./App.scss";
-
+import ScrollToTopButton from "./Components/ScrollToTopButton/ScrollToTopButton";
 
 const routes = [
   { path: "/", name: "Home", Component: Home },
@@ -19,7 +19,7 @@ const routes = [
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="top">
       <Header />
       <main>
         {routes.map(({ path, Component }) => (
@@ -28,6 +28,7 @@ function App() {
           </Route>
         ))}
       </main>
+      <ScrollToTopButton />
     </div>
   );
 }

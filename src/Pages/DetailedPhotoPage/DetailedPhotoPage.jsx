@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Context } from "../../StateManagement/AppState";
-import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 import DetailedPhotoPresenter from "../../Components/DetailedPhotoPresenter/DetailedPhotoPresenter";
 import SimilarPhotos from "../../Components/SimilarPhotos/SimilarPhotos";
 
@@ -36,7 +35,6 @@ const DetailedPhotoPage = () => {
       <>
         <DetailedPhotoPresenter post={context.selectedPost} />
         <SimilarPhotos post={context.selectedPost} />
-        <ScrollToTopButton />
       </>
     );
   };

@@ -5,12 +5,12 @@ import { Context } from "../../StateManagement/AppState";
 import GridControls from "../../Components/GridControls/GridControls";
 import PostsView from "../../Components/PostsView/PostsView";
 import { LoadigIndicator } from "../../assets/svgs";
-import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 import LoadMoreButton from "../../Components/LoadMoreButton/LoadMoreButton";
 
 import "./Home.scss";
 
 import gsap from "gsap";
+import GridViewPlaceholder from "../../Components/GridViewPlaceholder/GridViewPlaceholder";
 
 const Home = () => {
   const [listStyle, setListStyle] = useState(false);
@@ -57,7 +57,7 @@ const Home = () => {
       />
       <div style={{ minHeight: "120vh" }}>
         {context.loading ? (
-          <div>Loading</div>
+          <GridViewPlaceholder />
         ) : (
           <PostsView listStyle={listStyle} posts={context.posts} />
         )}
@@ -78,7 +78,6 @@ const Home = () => {
           <LoadMoreButton actionFunction={loadAdditionalPosts} />
         )}
       </div>
-      <ScrollToTopButton />
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { Context } from "../../StateManagement/AppState";
 
 import PostsView from "../../Components/PostsView/PostsView";
 import GridControls from "../../Components/GridControls/GridControls";
-import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 
 import "./Favorites.scss";
 
@@ -29,7 +28,6 @@ const Favorites = () => {
         handleListStyleChange={handleListStyleChange}
       />
       <PostsView listStyle={listStyle} posts={context.likedImages} />
-      <ScrollToTopButton />
     </div>
   );
 };
