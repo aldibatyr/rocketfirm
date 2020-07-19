@@ -1,11 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../../StateManagement/AppState";
+
 import GridControls from "../../Components/GridControls/GridControls";
 import PostsView from "../../Components/PostsView/PostsView";
-import { Context } from "../../StateManagement/AppState";
 import { LoadigIndicator } from "../../assets/svgs";
 import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
-import gsap from "gsap";
 import LoadMoreButton from "../../Components/LoadMoreButton/LoadMoreButton";
+
+import gsap from "gsap";
 
 const SearchResults = () => {
   const [listStyle, setListStyle] = useState(false);

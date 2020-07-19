@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./LoadMoreButton.scss";
 
 const LoadMoreButton = ({ actionFunction }) => {

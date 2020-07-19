@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import "./Post.scss";
+import React, { useState } from "react";
 
 import PostControls from "../PostControls/PostControls";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import UserInfo from "../UserInfo/UserInfo";
-import { Context } from "../../StateManagement/AppState";
+
+import "./Post.scss";
 
 const Post = ({ post }) => {
-  const context = useContext(Context);
   const [hovered, setHovered] = useState(false);
   const handleHover = () => {
     setHovered(true);

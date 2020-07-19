@@ -1,6 +1,6 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../StateManagement/AppState";
+
 const CategoryCell = ({ collection }) => {
   const context = useContext(Context);
 

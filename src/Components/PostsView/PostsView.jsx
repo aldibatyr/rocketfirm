@@ -1,6 +1,7 @@
 import React from "react";
 
 import Post from "../../Components/Post/Post";
+
 import "./PostsView.scss";
 
 const PostsView = ({ listStyle, posts }) => {

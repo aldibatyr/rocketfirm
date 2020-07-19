@@ -1,5 +1,7 @@
 import React from "react";
+
 import { GridViewIcon, ListViewIcon } from "../../assets/svgs";
+
 import "./GridControls.scss";
 
 const GridControls = ({ listStyle, handleListStyleChange }) => {

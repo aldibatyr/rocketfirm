@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./PostControls.scss";
+import { Link } from "react-router-dom";
+import { Context } from "../../StateManagement/AppState";
+
 import { keys } from "../../keys";
 import { FavoriteIcon, PanIcon, DownloadIcon } from "../../assets/svgs";
 import {
@@ -10,8 +12,8 @@ import {
   handleDownloadNormalize,
   handleDownloadZoom,
 } from "./postAnimations";
-import { Context } from "../../StateManagement/AppState";
-import { Link } from "react-router-dom";
+
+import "./PostControls.scss";
 
 const PostControls = ({ post }) => {
   const context = useContext(Context);

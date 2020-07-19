@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../StateManagement/AppState";
+
 import {
   FavoriteIcon,
   HistoryIcon,
@@ -8,7 +10,6 @@ import {
 } from "../../assets/svgs";
 
 import "./Navigation.scss";
-import { Context } from "../../StateManagement/AppState";
 
 const Navigation = ({
   minified,

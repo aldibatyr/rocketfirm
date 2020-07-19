@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useLocation } from "react-router-dom";
+import { useWindowSize } from "react-use";
+import { Context } from "../../StateManagement/AppState";
+
 import Navigation from "../Navigation/Navigation";
 import SearchBar from "../SearchBar/SearchBar";
 import Categories from "../Categories/Categories";
-
-import "./Header.scss";
-import { useLocation } from "react-router-dom";
-import { useContext } from "react";
-import { Context } from "../../StateManagement/AppState";
-import { useWindowSize } from "react-use";
 import {
   minimizeHeader,
   expandHeader,
   loadInitialHeader,
 } from "./headerAnimations";
+
+import "./Header.scss";
 
 const Header = () => {
   const context = useContext(Context);

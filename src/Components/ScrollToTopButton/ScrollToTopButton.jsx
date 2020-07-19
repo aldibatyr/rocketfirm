@@ -1,6 +1,9 @@
 import React from "react";
-import "./ScrollToTopButton.scss";
+
 import { ArrowUp } from "../../assets/svgs";
+
+import "./ScrollToTopButton.scss";
+
 
 const ScrollToTopButton = () => {
   return (

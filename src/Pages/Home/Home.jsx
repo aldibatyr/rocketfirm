@@ -1,14 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useWindowSize } from "react-use";
+
 import { Context } from "../../StateManagement/AppState";
-import "./Home.scss";
 import GridControls from "../../Components/GridControls/GridControls";
 import PostsView from "../../Components/PostsView/PostsView";
 import { LoadigIndicator } from "../../assets/svgs";
-import gsap from "gsap";
-import { useEffect } from "react";
-import { useWindowSize } from "react-use";
 import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 import LoadMoreButton from "../../Components/LoadMoreButton/LoadMoreButton";
+
+import "./Home.scss";
+
+import gsap from "gsap";
 
 const Home = () => {
   const [listStyle, setListStyle] = useState(false);

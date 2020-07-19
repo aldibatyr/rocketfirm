@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
-import PostsView from "../../Components/PostsView/PostsView";
-import { useState } from "react";
-import GridControls from "../../Components/GridControls/GridControls";
-import { Context } from "../../StateManagement/AppState";
-import { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useWindowSize } from "react-use";
+import { Context } from "../../StateManagement/AppState";
+
+import PostsView from "../../Components/PostsView/PostsView";
+import GridControls from "../../Components/GridControls/GridControls";
+import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 
 import "./Favorites.scss";
-import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 
 const Favorites = () => {
   const [listStyle, setListStyle] = useState(false);

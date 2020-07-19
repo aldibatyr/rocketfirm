@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./UserAvatar.scss";
 
 const UserAvatar = ({ user, size }) => {

@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import "./Categories.scss";
+import { Context } from "../../StateManagement/AppState";
 
 import CategoryCell from "../CategoryCell/CategoryCell";
-import { Context } from "../../StateManagement/AppState";
+
+import "./Categories.scss";
+
 
 const Categories = ({ showingMobileSearch }) => {
   const context = useContext(Context);

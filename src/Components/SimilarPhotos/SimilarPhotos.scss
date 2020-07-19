@@ -1,0 +1,39 @@
+@import '../../breakpoints.scss';
+
+.similarPhotosContainer {
+  margin-top: 100px;
+  max-width: 1200px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media('<tablet') {
+    width: calc(100vw - 40px);
+    margin-top: 30px;
+  }
+
+  .similarPhotosHeadline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: gray;
+
+      @include media('<tablet') {
+        display: none;
+      }
+    }
+  }
+
+  .similarPhotos {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    @include media('<tablet') {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { Context } from "../../StateManagement/AppState";
 
 import "./SearchBar.scss";
-import { Context } from "../../StateManagement/AppState";
-import { useHistory } from "react-router-dom";
+
 const SearchBar = ({ maximizeHeader, resetHeader }) => {
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState("");
