@@ -20,6 +20,7 @@ const DetailedPhotoPage = () => {
   };
 
   const loadPage = async () => {
+    setLoading(true);
     await getPhotoDetails();
     setTimeout(() => {
       setLoading(false);
@@ -41,7 +42,9 @@ const DetailedPhotoPage = () => {
     );
   };
 
-  return <div>{loading ? <DetailedPhotoPagePlaceholder /> : makeDetailedPage()}</div>;
+  return (
+    <div>{loading ? <DetailedPhotoPagePlaceholder /> : makeDetailedPage()}</div>
+  );
 };
 
 export default DetailedPhotoPage;
