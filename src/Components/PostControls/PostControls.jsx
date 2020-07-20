@@ -52,15 +52,14 @@ const PostControls = ({ post }) => {
       >
         <PanIcon size={28} />
       </Link>
-      <a
-        href={`${post.links.download_location}/client_id=${keys.ACCESS_KEY}`}
+      <div
         className="controlWrapper downloadIcon"
         onMouseEnter={handleDownloadZoom}
         onMouseLeave={handleDownloadNormalize}
         // onClick={handleDownload}
       >
         <DownloadIcon size={28} />
-      </a>
+      </div>
     </div>
   );
 };
