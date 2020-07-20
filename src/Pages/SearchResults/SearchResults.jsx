@@ -3,11 +3,12 @@ import { Context } from "../../StateManagement/AppState";
 
 import GridControls from "../../Components/GridControls/GridControls";
 import PostsView from "../../Components/PostsView/PostsView";
-import { LoadigIndicator } from "../../assets/svgs";
+import { LoadigIndicator, GridViewIcon } from "../../assets/svgs";
 import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
 import LoadMoreButton from "../../Components/LoadMoreButton/LoadMoreButton";
 
 import gsap from "gsap";
+import GridViewPlaceholder from "../../Components/GridViewPlaceholder/GridViewPlaceholder";
 
 const SearchResults = () => {
   const [listStyle, setListStyle] = useState(false);
@@ -39,7 +40,11 @@ const SearchResults = () => {
         listStyle={listStyle}
         handleListStyleChange={handleListStyleChange}
       />
-      <PostsView listStyle={listStyle} posts={context.posts} />
+      {context.loading ? (
+        <GridViewPlaceholder />
+      ) : (
+        <PostsView listStyle={listStyle} posts={context.posts} />
+      )}
       {context.additionalPosts
         ? context.additionalPosts.map((postsArray, i) => {
             return (

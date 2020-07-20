@@ -1,0 +1,130 @@
+@import '../../breakpoints.scss';
+$background: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+$smallAnimation: small-animation 1.6s infinite;
+$textAnimation: text-animation 1.6s infinite;
+$largeAnimation: large-animation 1.6s infinite;
+
+.detailedPagePlaceholder {
+  padding-top: 120px;
+  padding-bottom: 100px;
+  width: 100vw;
+  min-height: 100vh;
+  background: gray;
+
+  .userInfoPlaceholder {
+    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .avatarAndInfoPlaceholder {
+      display: flex;
+
+      .avatarPlaceholder {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        background: $background;
+        margin-right: 10px;
+        animation: $smallAnimation;
+      }
+
+      .infoPlaceholder {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .namePlaceholder {
+          width: 50px;
+          height: 25px;
+          border-radius: 3px;
+          background: $background;
+          animation: $textAnimation;
+          margin-bottom: 5px;
+        }
+
+        .linkPlaceholder {
+          width: 70px;
+          height: 16px;
+          border-radius: 3px;
+          background: $background;
+          animation: $textAnimation;
+        }
+      }
+    }
+
+    .postControlsPlaceholder {
+      display: flex;
+
+      .smallButtonPlaceholder {
+        height: 50px;
+        width: 50px;
+        border-radius: 8px;
+        background: $background;
+        animation: $smallAnimation;
+        margin-right: 10px;
+      }
+
+      .largeButtonPlaceholder {
+        height: 50px;
+        width: 200px;
+        border-radius: 8px;
+        background: $background;
+        animation: $smallAnimation;
+
+        @include media('<tablet') {
+          width: 50px;
+        }
+      }
+    }
+  }
+
+  .imagePlaceholder {
+    margin: 100px auto;
+    max-width: 1200px;
+    width: 80%;
+    height: 400px;
+    border-radius: 8px;
+    background: $background;
+
+    @include media('<tablet') {
+      width: calc(100vw - 40px);
+    }
+
+    animation: $largeAnimation;
+  }
+}
+
+@keyframes small-animation {
+
+  0% {
+    background-position: 40px
+  }
+
+  100% {
+    background-position: 100%
+  }
+}
+
+@keyframes text-animation {
+
+  0% {
+    background-position: 40px
+  }
+
+  100% {
+    background-position: 100%
+  }
+}
+
+@keyframes largeAanimation {
+
+  0% {
+    background-position: 40px
+  }
+
+  100% {
+    background-position: 33vw
+  }
+}

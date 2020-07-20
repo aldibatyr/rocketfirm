@@ -27,7 +27,9 @@ const AppStateProvider = ({ children }) => {
     const json = await imagesData.json();
     setPosts(json);
     setAdditionalPosts([]);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   };
 
   const fetchAdditionalPosts = async () => {
@@ -56,7 +58,9 @@ const AppStateProvider = ({ children }) => {
     const imagesData = await unsplash.search.photos(searchQuery, 1, 25);
     const imagesJson = await imagesData.json();
     setPosts(imagesJson.results);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     return;
   };
 
@@ -93,7 +97,6 @@ const AppStateProvider = ({ children }) => {
   const getPhotoDetails = async (id) => {
     const photoDetailsData = await unsplash.photos.getPhoto(id);
     const photoDetailsJson = await photoDetailsData.json();
-    console.log(photoDetailsJson);
     setSelectedPost(photoDetailsJson);
   };
 
@@ -108,7 +111,6 @@ const AppStateProvider = ({ children }) => {
   useEffect(() => {
     fetchCollections();
   }, []);
-
 
   return (
     <div>

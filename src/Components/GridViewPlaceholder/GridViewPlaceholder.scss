@@ -1,16 +1,29 @@
+@import '../../breakpoints.scss';
+
 .loadingScreen {
   max-width: 1200px;
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 
+  @include media('<tablet') {
+    flex-direction: column;
+  }
+
   .rectangle {
     width: 30%;
+    max-width: 400px;
     height: 300px;
     border-radius: 8px;
     background: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
     animation: shine-animation 1.6s infinite;
     margin-bottom: 20px;
+
+    @include media('<tablet') {
+      width: 100%;
+    }
   }
 }
 

@@ -6,6 +6,7 @@ import DetailedPhotoPresenter from "../../Components/DetailedPhotoPresenter/Deta
 import SimilarPhotos from "../../Components/SimilarPhotos/SimilarPhotos";
 
 import "./DetailedPhotoPage.scss";
+import DetailedPhotoPagePlaceholder from "../../Components/DetailedPhotoPagePlaceholder/DetailedPhotoPagePlaceholder";
 
 const DetailedPhotoPage = () => {
   const [loading, setLoading] = useState(true);
@@ -20,8 +21,9 @@ const DetailedPhotoPage = () => {
 
   const loadPage = async () => {
     await getPhotoDetails();
-
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   };
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const DetailedPhotoPage = () => {
     );
   };
 
-  return <div>{loading ? <span>loading</span> : makeDetailedPage()}</div>;
+  return <div>{loading ? <DetailedPhotoPagePlaceholder /> : makeDetailedPage()}</div>;
 };
 
 export default DetailedPhotoPage;
